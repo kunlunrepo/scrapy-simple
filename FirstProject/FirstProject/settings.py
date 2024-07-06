@@ -33,16 +33,17 @@ ROBOTSTXT_OBEY = True
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-#    "Accept-Language": "en",
-#}
+DEFAULT_REQUEST_HEADERS = {
+   # "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+   # "Accept-Language": "en",
+   "Cookie": "shanzhi_kmer=c2k86m2mobp1luw1ehqw94mgh9e1fnqq; csrftoken=7y8oJ0mCZneO5ba0W8wy57BEy19Nfk3lVUaXXNBTvzAkEvh1NANC84lNCLuKfLao"
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
