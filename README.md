@@ -54,3 +54,9 @@ scrapy version
 scrapy bench
 ```
 
+**如果想使用ImagesPipeline的pipeline**
+
+```shell
+pip install Pillow
+```
+
