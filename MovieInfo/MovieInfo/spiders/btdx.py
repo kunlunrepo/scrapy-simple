@@ -4,14 +4,18 @@ import scrapy
 class BtdxSpider(scrapy.Spider):
     name = "btdx"
     allowed_domains = ["btdx8.vip"]
-    start_urls = ["https://www.btdx8.vip/category/kehuan/page/{}".format(i) for i in range(1, 4)]
+    start_urls = ["https://www.btdx8.vip/category/kehuan/page/{}".format(i) for i in range(1, 2)]
     host = 'https://www.btdx8.vip'
 
     custom_settings = {
         'DOWNLOAD_DELAY': 0.1,
         'CONCURRENT_REQUESTS': 10,
-        'DOWNLOADER_MIDDLEWARES': {
-            # 'FirstProject.middlewares.FirstprojectDownloaderMiddleware': 543,
+        # 'DOWNLOADER_MIDDLEWARES': {
+        #     # 'FirstProject.middlewares.FirstprojectDownloaderMiddleware': 543,
+        #
+        # },
+        'ITEM_PIPELINES' : {
+           "MovieInfo.pipelines.MovieinfoPipeline": 300,
         }
     }
 
@@ -55,4 +59,5 @@ class BtdxSpider(scrapy.Spider):
         item['type'] = "".join([info.replace('类别', '') for info in info_list if "类别" in info])
         item['language'] = "".join([info.replace('语言', '') for info in info_list if "语言" in info])
         item['info_source'] = response.xpath('.//div[@class="poster"]').get()
-        print(item)
+        # print(item)
+        yield item
