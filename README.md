@@ -78,3 +78,9 @@ pip install scrapyd-client
 scrapyd-deploy -a -p [project_name]
 ```
 
+**安装redis**
+
+```shell
+ pip install redis
+```
+

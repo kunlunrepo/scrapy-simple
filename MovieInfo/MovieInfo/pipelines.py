@@ -41,3 +41,18 @@ class MovieinfoPipeline:
     def close_spider(self, spider):
         self.file.close()
 
+
+import redis
+import json
+
+class MovieinfoRedisPipeline:
+    def open_spider(self, spider):
+        self.conn = redis.Redis(host="192.168.10.55", port=6379, db=0, password='base@GO5r1Ydsb6H')
+
+    def process_item(self, item, spider):
+        if item.get("title", False):
+            self.conn.set(item["title"], json.dumps(item))
+        return item
+
+    def close_spider(self, spider):
+        self.conn.close()

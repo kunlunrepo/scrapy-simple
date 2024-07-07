@@ -10,7 +10,8 @@ class Douban250Spider(scrapy.Spider):
         'DOWNLOAD_DELAY': 0.5,
         'CONCURRENT_REQUESTS': 2,
         'ITEM_PIPELINES': {
-            "MovieInfo.pipelines.MovieinfoPipeline": 300,
+            # "MovieInfo.pipelines.MovieinfoPipeline": 300,
+            "MovieInfo.pipelines.MovieinfoRedisPipeline": 300,
         }
     }
 
