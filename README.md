@@ -90,3 +90,15 @@ pip install redis
 pip install pymysql
 ```
 
+**安装web管理端**
+
+```shell
+pip install spider-admin-pro
+```
+
+**启动web管理端**
+
+```shell
+gunicorn --bind '0.0.0.0:8000' 'spider_admin_pro.main:app'
+```
+
