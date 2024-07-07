@@ -60,3 +60,21 @@ scrapy bench
 pip install Pillow
 ```
 
+**liunx安装scrapyd**
+
+```shell
+pip install scrapyd
+```
+
+**开发端安装scrapyd-client**
+
+```shell
+pip install scrapyd-client
+```
+
+**部署命令**
+
+```shell
+scrapyd-deploy -a -p [project_name]
+```
+

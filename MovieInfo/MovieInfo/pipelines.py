@@ -18,6 +18,10 @@ class MovieinfoPipeline:
     """
     keys = ["title", "director", "actor", "duration", "movie_image",
             "rating", "release_date", "type", "language", "spider"]
+
+    def __init__(self):
+        pass
+
     def open_spider(self, spider):
         csv_filename = "{}_{}.csv".format(spider.name, datetime.datetime.now().strftime("%Y%m%d%H%M%S"))
         self.file = open(csv_filename, "a", encoding="utf-8", newline="")
