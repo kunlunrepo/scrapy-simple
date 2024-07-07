@@ -6,6 +6,11 @@ class Douban250Spider(scrapy.Spider):
     allowed_domains = ["movie.douban.com"]
     start_urls = ["https://movie.douban.com/top250"]
 
+    custom_settings = {
+        'DOWNLOAD_DELAY': 0.5,
+        'CONCURRENT_REQUESTS': 2
+    }
+
     def parse(self, response):
         movie_elements = response.xpath('.//ol[@class="grid_view"]/li')
         for movie in movie_elements:
