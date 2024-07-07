@@ -16,7 +16,8 @@ class BtdxSpider(scrapy.Spider):
         # },
         'ITEM_PIPELINES' : {
            # "MovieInfo.pipelines.MovieinfoPipeline": 300,
-            "MovieInfo.pipelines.MovieinfoRedisPipeline": 300,
+           #  "MovieInfo.pipelines.MovieinfoRedisPipeline": 300,
+            "MovieInfo.pipelines.MovieinfoMysqlPipeline": 300,
         }
     }
 

@@ -81,6 +81,12 @@ scrapyd-deploy -a -p [project_name]
 **安装redis**
 
 ```shell
- pip install redis
+pip install redis
+```
+
+**安装pymysql**
+
+```shell
+pip install pymysql
 ```
 

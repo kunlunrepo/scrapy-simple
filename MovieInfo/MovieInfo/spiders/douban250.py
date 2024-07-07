@@ -11,7 +11,8 @@ class Douban250Spider(scrapy.Spider):
         'CONCURRENT_REQUESTS': 2,
         'ITEM_PIPELINES': {
             # "MovieInfo.pipelines.MovieinfoPipeline": 300,
-            "MovieInfo.pipelines.MovieinfoRedisPipeline": 300,
+            #  "MovieInfo.pipelines.MovieinfoRedisPipeline": 300,
+            "MovieInfo.pipelines.MovieinfoMysqlPipeline": 300,
         }
     }
 

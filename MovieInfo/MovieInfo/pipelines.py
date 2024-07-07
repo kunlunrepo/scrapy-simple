@@ -56,3 +56,73 @@ class MovieinfoRedisPipeline:
 
     def close_spider(self, spider):
         self.conn.close()
+
+import pymysql
+class MovieinfoMysqlPipeline:
+
+    database='moveinfo'
+    table='movie_infos'
+
+    def open_spider(self, spider):
+        self.conn = pymysql.connect(host="192.168.10.55", port=3306, db=self.database,
+                                    user="root", password="base@GO5r1Ydsb6H", charset="utf8")
+        self.cursor = self.conn.cursor()
+        self.create_table()
+
+    def create_table(self):
+        create_table_sql = f"""
+        CREATE TABLE IF NOT EXISTS `{self.table}` (
+          `id` int(11) NOT NULL AUTO_INCREMENT,
+          `title` varchar(255) DEFAULT NULL,
+          `director` varchar(255) DEFAULT NULL,
+          `actor` varchar(255) DEFAULT NULL,
+          `duration` varchar(255) DEFAULT NULL,
+          `movie_image` varchar(255) DEFAULT NULL,
+          `rating` varchar(255) DEFAULT NULL,
+          `release_date` varchar(255) DEFAULT NULL,
+          `type` varchar(255) DEFAULT NULL,
+          `language` varchar(255) DEFAULT NULL,
+          `info_source` text,
+          `spider` varchar(255) DEFAULT NULL,
+          PRIMARY KEY (`id`)
+          );
+          """
+        self.cursor.execute(create_table_sql)
+        self.conn.commit()
+
+
+    def process_item(self, item, spider):
+        if item.get("title", False):
+            insert_sql = f"""
+            INSERT INTO `{self.table}` (
+              `title`,
+              `director`,
+              `actor`,
+              `duration`,
+              `movie_image`,
+              `rating`,
+              `release_date`,
+              `type`,
+              `language`,
+              `info_source`,
+              `spider`
+              ) VALUES (
+              '{item["title"]}',
+              '{item["director"]}',
+             '{item["actor"]}',
+             '{item["duration"]}',
+             '{item["movie_image"]}',
+             '{item["rating"]}',
+             '{item["release_date"]}',
+             '{item["type"]}',
+             '{item["language"]}',
+             '{item["info_source"]}',
+             '{spider.name}'
+              );
+              """
+            self.cursor.execute(insert_sql)
+            self.conn.commit()
+        return item
+
+    def close_spider(self, spider):
+        self.conn.close()
